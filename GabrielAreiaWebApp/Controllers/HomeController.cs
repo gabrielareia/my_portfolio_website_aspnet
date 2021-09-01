@@ -45,6 +45,7 @@ namespace GabrielAreiaWebApp.Controllers
         {
             if (Program.Language == "pt")
             {
+                //Portuguese
                 return new Dictionary<string, string>()
                 {
                     {"Home", "Início" },
@@ -59,10 +60,19 @@ namespace GabrielAreiaWebApp.Controllers
                     {"Goals", "Objetivos" },
                     {"Contact Information", "Informações de Contato" },
                     {"Cellphone", "Celular" },
+                    //
+                    {"Institution", "Instituição" },
+                    {"Go to website", "Visite o site" },
+                    {"Start", "Início" },
+                    {"End", "Conclusão" },
+                    {"See Certificate", "Ver certificado" },
+                    {"Experience", "Experiência" },
+                    {"Year", "Ano" },
                 };
             }
             else
             {
+                //English
                 return new Dictionary<string, string>()
                 {
                     {"Home", "Home" },
@@ -77,6 +87,14 @@ namespace GabrielAreiaWebApp.Controllers
                     {"Goals", "Goals" },
                     {"Contact Information", "Contact Information" },
                     {"Cellphone", "Cellphone" },
+                    //
+                    {"Institution", "Institution" },
+                    {"Go to website", "Go to website" },
+                    {"Start", "Start" },
+                    {"End", "End" },
+                    {"See Certificate", "See Certificate" },
+                    {"Experience", "Experience" },
+                    {"Year", "Year" },
                 };
             }
         }

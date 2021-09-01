@@ -16,7 +16,7 @@
     @{
         if (Model.Courses != null || Model.Courses.Length > 0)
         {
-        <h2>@ViewBag.Text["Courses"]:</h2>
+            <h2>@ViewBag.Text["Courses"]:</h2>
 
             @for (int i = 0; i < Model.Courses.Length; i++)
             {
@@ -42,17 +42,23 @@
 
                         <div class="item-details item-details-margin">
                             <div class="item-details-info">
-                                <h4 class="remove-margin">Institution:</h4>
+                                <h4 class="remove-margin">@ViewBag.Text["Institution"]:</h4>
                                 <p class="remove-margin">@Model.Courses[i].Institution</p>
-                                <a class="remove-margin" href="@Model.Courses[i].InstitutionWebsite">Go to Website</a>
+                                <a class="remove-margin" href="@Model.Courses[i].InstitutionWebsite" target="_blank">
+                                    @ViewBag.Text["Go to website"]
+                                </a>
                             </div>
                             <div class="space"></div>
                             <div id="course-date" class="course-details-info">
-                                <h4 class="remove-margin">Started at:</h4>
+                                <h4 class="remove-margin">
+                                    @ViewBag.Text["Start"]:
+                                </h4>
                                 <p class="remove-margin">@Model.Courses[i].YearStart</p>
                                 @if (Model.Courses[i].YearEnd > 0)
                                 {
-                                    <h4 class="remove-margin">Ended at:</h4>
+                                    <h4 class="remove-margin">
+                                        @ViewBag.Text["End"]:
+                                    </h4>
                                     <p class="remove-margin">@Model.Courses[i].YearEnd</p>
                                 }
                             </div>
@@ -64,7 +70,7 @@
 
                                 <button class="button-certificate"
                                         onclick="openCertificate('@Model.Courses[i].CertificateAddress')">
-                                    See Certificate
+                                    @ViewBag.Text["See Certificate"]
                                 </button>
 
                             </div>
@@ -90,7 +96,7 @@
         if (Model.Abilities != null || Model.Abilities.Length > 0)
         {
 
-        <h2>@ViewBag.Text["Abilities"]:</h2>
+            <h2>@ViewBag.Text["Abilities"]:</h2>
 
             @for (int i = 0; i < Model.Abilities.Length; i++)
             {
@@ -125,7 +131,9 @@
 
                         <div id="item-details" class="item-details item-details-margin item-details-size">
                             <div class="item-details-info">
-                                <h4 class="remove-margin">Experience:</h4>
+                                <h4 class="remove-margin">
+                                    @ViewBag.Text["Experience"]:
+                                </h4>
                                 <p class="remove-margin">@Model.Abilities[i].Experience</p>
                             </div>
                         </div>
@@ -149,7 +157,7 @@
     @{
         if (Model.Achievements != null || Model.Achievements.Length > 0)
         {
-        <h2>@ViewBag.Text["Achievements"]:</h2>
+            <h2>@ViewBag.Text["Achievements"]:</h2>
 
             @for (int i = 0; i < Model.Achievements.Length; i++)
             {
@@ -175,7 +183,9 @@
 
                         <div id="item-details" class="item-details item-details-margin item-details-size">
                             <div class="item-details-info">
-                                <h4 class="remove-margin">Year:</h4>
+                                <h4 class="remove-margin">
+                                    @ViewBag.Text["Year"]:
+                                </h4>
                                 <p class="remove-margin">@Model.Achievements[i].Year</p>
                             </div>
                         </div>
@@ -199,7 +209,7 @@
     @{
         if (Model.Goals != null || Model.Goals.Length > 0)
         {
-        <h2>@ViewBag.Text["Goals"]:</h2>
+            <h2>@ViewBag.Text["Goals"]:</h2>
 
             <div class="goals">
                 <ul>
@@ -221,7 +231,7 @@
     @{
         if (Model.Contact != null)
         {
-        <h2>@ViewBag.Text["Contact Information"]:</h2>
+            <h2>@ViewBag.Text["Contact Information"]:</h2>
 
             <div class="contact-info">
                 <div class="contact-info-item">

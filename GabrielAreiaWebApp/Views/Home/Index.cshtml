@@ -1,0 +1,266 @@
+﻿@model Resume;
+@{
+    ViewData["Title"] = "My Resume";
+    Layout = "_SidePanelLayout";
+    string Root = ViewBag.Root;
+}
+
+<link rel="stylesheet" href="~/css/content.css" />
+<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+
+<div class="content page-text">
+
+    <h1>@ViewBag.Text["About me"]</h1>
+    <p>@Model.Description</p>
+
+    @{
+        if (Model.Courses != null || Model.Courses.Length > 0)
+        {
+        <h2>@ViewBag.Text["Courses"]:</h2>
+
+            @for (int i = 0; i < Model.Courses.Length; i++)
+            {
+                <div class="resume-item">
+                    <div id="item-background" class="item-background"></div>
+
+                    <div class="item-div">
+
+                        <div id="item-image">
+                            <img class="item-image"
+                                 src="@string.Concat(Root, Model.Courses[i].LogoAddress)" width="150" height="150" />
+                        </div>
+
+                        <div id="item-name" class="item-name">
+                            <h3 class="">@Model.Courses[i].Name</h3>
+                        </div>
+
+                        <div class="item-description item-details-margin">
+                            <p class="remove-margin">
+                                @Model.Courses[i].Description
+                            </p>
+                        </div>
+
+                        <div class="item-details item-details-margin">
+                            <div class="item-details-info">
+                                <h4 class="remove-margin">Institution:</h4>
+                                <p class="remove-margin">@Model.Courses[i].Institution</p>
+                                <a class="remove-margin" href="@Model.Courses[i].InstitutionWebsite">Go to Website</a>
+                            </div>
+                            <div class="space"></div>
+                            <div id="course-date" class="course-details-info">
+                                <h4 class="remove-margin">Started at:</h4>
+                                <p class="remove-margin">@Model.Courses[i].YearStart</p>
+                                @if (Model.Courses[i].YearEnd > 0)
+                                {
+                                    <h4 class="remove-margin">Ended at:</h4>
+                                    <p class="remove-margin">@Model.Courses[i].YearEnd</p>
+                                }
+                            </div>
+                        </div>
+
+                        @if (Model.Courses[i].CertificateAddress != null)
+                        {
+                            <div class="button-certificate-parent item-details-margin">
+
+                                <button class="button-certificate"
+                                        onclick="openCertificate('@Model.Courses[i].CertificateAddress')">
+                                    See Certificate
+                                </button>
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="button-certificate-parent item-details-margin">
+
+                                <div class="button-certificate-holder">
+
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            }
+        }
+    }
+
+    @{
+        if (Model.Abilities != null || Model.Abilities.Length > 0)
+        {
+
+        <h2>@ViewBag.Text["Abilities"]:</h2>
+
+            @for (int i = 0; i < Model.Abilities.Length; i++)
+            {
+                <div class="resume-item">
+                    <div id="item-background" class="item-background"></div>
+
+                    <div class="item-div">
+
+                        <div id="item-image">
+                            @{ if (string.IsNullOrEmpty(Model.Abilities[i].LogoAddress))
+                                {
+                                    <img class="item-image" src="~/Images/Ability.jpg" width="150" height="150" />
+                                }
+                                else
+                                {
+                                    <img class="item-image"
+                                         src=@string.Concat(Root, Model.Abilities[i].LogoAddress) width="150" height="150" />
+                                }
+                            }
+
+                        </div>
+
+                        <div id="item-name" class="item-name">
+                            <h3 class="">@Model.Abilities[i].Subject</h3>
+                        </div>
+
+                        <div class="item-description item-details-margin">
+                            <p class="remove-margin">
+                                @Model.Abilities[i].Description
+                            </p>
+                        </div>
+
+                        <div id="item-details" class="item-details item-details-margin item-details-size">
+                            <div class="item-details-info">
+                                <h4 class="remove-margin">Experience:</h4>
+                                <p class="remove-margin">@Model.Abilities[i].Experience</p>
+                            </div>
+                        </div>
+
+                        <div class="button-certificate-parent item-details-margin">
+
+                            <div class="button-certificate-holder">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+        }
+    }
+
+
+    @{
+        if (Model.Achievements != null || Model.Achievements.Length > 0)
+        {
+        <h2>@ViewBag.Text["Achievements"]:</h2>
+
+            @for (int i = 0; i < Model.Achievements.Length; i++)
+            {
+                <div class="resume-item">
+                    <div id="item-background" class="item-background"></div>
+
+                    <div class="item-div">
+
+                        <div id="item-image">
+                            <img class="item-image"
+                                 src="~/Images/Achievements.jpg" width="150" height="150" />
+                        </div>
+
+                        <div id="item-name" class="item-name">
+                            <h3 class="">@Model.Achievements[i].Title</h3>
+                        </div>
+
+                        <div class="item-description item-details-margin">
+                            <p class="remove-margin">
+                                @Model.Achievements[i].Description
+                            </p>
+                        </div>
+
+                        <div id="item-details" class="item-details item-details-margin item-details-size">
+                            <div class="item-details-info">
+                                <h4 class="remove-margin">Year:</h4>
+                                <p class="remove-margin">@Model.Achievements[i].Year</p>
+                            </div>
+                        </div>
+
+                        <div class="button-certificate-parent item-details-margin">
+
+                            <div class="button-certificate-holder">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            }
+        }
+    }
+
+
+
+    @{
+        if (Model.Goals != null || Model.Goals.Length > 0)
+        {
+        <h2>@ViewBag.Text["Goals"]:</h2>
+
+            <div class="goals">
+                <ul>
+
+                    @for (int i = 0; i < Model.Goals.Length; i++)
+                    {
+                        <li>
+                            @Model.Goals[i]
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        }
+    }
+
+
+
+    @{
+        if (Model.Contact != null)
+        {
+        <h2>@ViewBag.Text["Contact Information"]:</h2>
+
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <h5>Skype:</h5>
+                    <p class="indent">@Model.Contact.Skype</p>
+                </div>
+
+                <div class="contact-info-item">
+                    <h5>Discord:</h5>
+                    <p class="indent">@Model.Contact.Discord</p>
+                </div>
+
+                <div class="contact-info-item">
+                    <h5>@ViewBag.Text["Cellphone"]:</h5>
+                    @for (int i = 0; i < Model.Contact.Cellphones.Length; i++)
+                    {
+                        <p class="indent">@Model.Contact.Cellphones[i]</p>
+                    }
+                </div>
+
+                <div class="contact-info-item">
+                    <h5>E-mail:</h5>
+                    @for (int i = 0; i < Model.Contact.EmailAddresses.Length; i++)
+                    {
+                        <p class="indent">@Model.Contact.EmailAddresses[i]</p>
+                    }
+                </div>
+
+                <div class="contact-info-item">
+                    <h5>Websites:</h5>
+                    @for (int i = 0; i < Model.Contact.Websites.Length; i++)
+                    {
+                        <a class="indent" href="@Model.Contact.Websites[i]" target="_blank">@Model.Contact.Websites[i]</a>
+                    }
+                </div>
+
+            </div>
+        }
+    }
+
+
+</div>

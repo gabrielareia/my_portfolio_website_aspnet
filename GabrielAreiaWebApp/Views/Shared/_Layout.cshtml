@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="preload body">
+    <header>
+        <nav class="nav">
+            <div class="navbar">
+                <div class="navbar-brand-location">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Gabriel Areia</a>
+                </div>
+                <div class="separator">
+                </div>
+                <div>
+                    <ul class="navbar-list">
+                        <li class="navbar-list-item">
+                            <a class="" asp-area="" asp-controller="Resume" 
+                               asp-action="Index">@ViewBag.Text["Home"]</a>
+                        </li>
+                        <li class="navbar-list-item">
+                            <a class="" href="https://www.github.com/gabrielareia" 
+                               target="_blank">@ViewBag.Text["Source Code"]</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="layout-content">
+        <div class="">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="footer-text">
+            &copy; 2021 - Gabriel Areia
+        </div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

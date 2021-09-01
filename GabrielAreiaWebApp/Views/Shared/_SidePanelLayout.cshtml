@@ -1,0 +1,60 @@
+﻿@model Resume
+@{
+    Layout = "_Layout";
+    string imageAddress = ViewBag.Root + Model.PictureAddress;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="preload body sidepanel-location">
+    <header>
+        <div class="sidepanel">
+            <img src="@imageAddress" class="photoheader" />
+
+            <div id="sidepanel-title" class=" sidepanel-title">
+                <h1>@ViewBag.Text["Where to find me"]</h1>
+            </div>
+
+            <div id="sidepanel-text" class="sidepanel-text">
+                <div class="">
+                    <div class="icon-parent">
+                        <i class="fab fa-twitter-square icon"></i>
+                        <p class="icon-text">@@gabriel_areia</p>
+                    </div>
+                    <div class="icon-parent">
+                        <i class="fab fa-instagram-square icon"></i>
+                        <p class="icon-text">@@gabriel_areia</p>
+                    </div>
+                    <div class="icon-parent">
+                        <i class="fab fa-linkedin icon"></i>
+                        <a href="https://linkedin.com" target="_blank" class="icon-text" >in/gabriel-areia</a>
+                    </div>
+                    <div class="icon-parent">
+                        <i class="fab fa-github-square icon"></i>
+                        <a href="https://github.com/gabrielareia" target="_blank" class="icon-text" >gabrielareia</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </header>
+
+    <div class="body-content">
+        <div class="">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
